@@ -1,6 +1,7 @@
-#include<stdio.h>
-#include<winsock2.h>
-#include<string.h>
+#include <stdio.h>
+#include <winsock2.h>
+#include <string.h>
+#include <stdlib.h>
 
 #pragma comment(lib,"ws2_32.lib")
 
@@ -38,11 +39,11 @@ int main(int atgc, char *argv[]) {
 	if (newServSock == INVALID_SOCKET)
 	{
 		printf("accept failed with error code : %d", WSAGetLastError());
-		//asd
+		
 	}
 
 	char buffer[256];
-	read(newServSock, buffer, 255);
+	recv(newServSock, buffer, 255,0);
 	printf("\nGot this message: %s\n",buffer);
 
 
@@ -55,9 +56,9 @@ int main(int atgc, char *argv[]) {
 	
 	
 	//close(s);
-	closesocket(newServSock);
-	closesocket(servSock);
-	WSACleanup();
+	//closesocket(newServSock);
+	//closesocket(servSock);
+	//WSACleanup();
 
 	return 0;
 
